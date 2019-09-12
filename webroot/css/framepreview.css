@@ -1,0 +1,117 @@
+#framepreview {
+	background: #000;
+	border: 8px solid #FF9933;
+	border-collapse: separate;
+	margin: 0 auto;
+}
+#framepreview td{
+	width: 8px;
+	height: 8px;
+	text-align:center;
+}
+#framepreview td.led {
+	background: url(../img/frames/led-blank.png) no-repeat 50% 50%;
+}
+	#framepreview td.led.red {
+		background: url(../img/frames/led-red.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.blue {
+		background: url(../img/frames/led-blue.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.green {
+		background: url(../img/frames/led-green.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.yellow {
+		background: url(../img/frames/led-yellow.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.white {
+		background: url(../img/frames/led-white.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.amber, #framepreview td.led.default {
+		background: url(../img/frames/led-amber.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.cyan {
+		background: url(../img/frames/led-cyan.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.magenta {
+		background: url(../img/frames/led-magenta.png) no-repeat 50% 50%;
+	}
+	#framepreview td.led.orange {
+		background: url(../img/frames/led-orange.png) no-repeat 50% 50%;
+	}
+
+table.red { 
+	cursor: url(../img/frames/pencil-red.cur) 0 30, 
+			url(../img/frames/pencil-red.ani) 0 30, 
+			url(../img/frames/pencil-red.png) 0 30, default
+}
+table.blue { 
+	cursor: url(../img/frames/pencil-blue.cur) 0 30, 
+			url(../img/frames/pencil-blue.ani) 0 30, 
+			url(../img/frames/pencil-blue.png) 0 30, default
+}
+table.green { 
+	cursor: url(../img/frames/pencil-green.cur) 0 30, 
+			url(../img/frames/pencil-green.ani) 0 30, 
+			url(../img/frames/pencil-green.png) 0 30, default
+}
+table.yellow { 
+	cursor: url(../img/frames/pencil-yellow.cur) 0 30, 
+			url(../img/frames/pencil-yellow.ani) 0 30, 
+			url(../img/frames/pencil-yellow.png) 0 30, default
+}
+table.white { 
+	cursor: url(../img/frames/pencil-white.cur) 0 30, 
+			url(../img/frames/pencil-white.ani) 0 30, 
+			url(../img/frames/pencil-white.png) 0 30, default
+}
+table.amber, table.default { 
+	cursor: url(../img/frames/pencil-amber.cur) 0 30, 
+			url(../img/frames/pencil-amber.ani) 0 30, 
+			url(../img/frames/pencil-amber.png) 0 30, default
+}
+table.cyan { 
+	cursor: url(../img/frames/pencil-cyan.cur) 0 30, 
+			url(../img/frames/pencil-cyan.ani) 0 30, 
+			url(../img/frames/pencil-cyan.png) 0 30, default
+}
+table.magenta { 
+	cursor: url(../img/frames/pencil-magenta.cur) 0 30, 
+			url(../img/frames/pencil-magenta.ani) 0 30, 
+			url(../img/frames/pencil-magenta.png) 0 30, default
+}
+table.orange { 
+	cursor: url(../img/frames/pencil-orange.cur) 0 30, 
+			url(../img/frames/pencil-orange.ani) 0 30, 
+			url(../img/frames/pencil-orange.png) 0 30, default
+}
+table.eraser { 
+	cursor: url(../img/frames/eraser.cur) 0 30, 
+			url(../img/frames/eraser.ani) 0 30, 
+			url(../img/frames/eraser.png) 0 30, default
+}
+
+.selectPredefined {
+	cursor: pointer;
+	position: relative;
+}
+
+.colourpalette {
+	float: left;
+	width: 23.0769%;
+}
+.colourpalette li {
+	float: left;
+	margin: 10px 10px 0 0;
+}
+
+.editcolour.selected, .erasecolour.selected {
+	-webkit-box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, .5);
+	box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, .5);
+}
+
+.remimage {
+	position: absolute;
+	top: 1px;
+	right: 0px;
+}

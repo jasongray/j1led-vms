@@ -1,0 +1,159 @@
+/***
+default theme
+***/
+
+/***
+Reset and overrides  
+***/
+body { 
+  background-color:#3d3d3d;
+}
+
+/***
+Page header
+***/
+.header .navbar-inner {
+  background-image: none !important;
+  background-color: #1f1f1f !important;
+}
+
+.header .btn-navbar {  
+  background-color: #1f1f1f !important;
+} 
+
+.header .nav .dropdown-toggle:hover, 
+.header .nav .dropdown.open .dropdown-toggle {
+  background-color: #333 !important;
+}
+
+.header .nav li.dropdown .dropdown-toggle i {
+  color: #808080 !important;
+}
+
+/***
+Page sidebar
+***/
+.page-sidebar > ul > li > a {
+  border-top: 1px solid #595959 !important;
+  color: #fff !important;
+}
+
+.page-sidebar > ul > li:last-child > a {
+   border-bottom: 1px solid transparent !important;
+}
+
+.page-sidebar > ul > li:first-child > a {
+  border-top-color: transparent !important;
+}
+
+.page-sidebar > ul > li a i {
+   color: #808080;
+}
+
+.page-sidebar > ul > li.has-sub.open >a, 
+.page-sidebar > ul > li >a:hover, 
+.page-sidebar > ul > li:hover>a {  
+  background: #313131;
+}
+
+.page-sidebar > ul > li.active > a{
+  background: #CCCC00 !important;  
+  border-top-color: transparent !important;
+  color:#000 !important;
+}  
+
+.page-sidebar > ul > li.active > a i {
+  color:#000;
+}
+
+.page-sidebar > ul > li > a.open {
+  background: #313131;
+}
+
+.page-sidebar ul > li > a .arrow:before,
+.page-sidebar > ul > li > a .arrow.open:before {  
+   color: #919091 !important;
+}
+
+.page-sidebar ul > li.active > a .arrow:before,
+.page-sidebar > ul > li.active > a .arrow.open:before {  
+   color: #fff !important;
+}
+
+.page-sidebar > ul > li > ul.sub > li > a {
+  color: #fff;
+  margin-left:0px;  
+  padding-left: 5px; 
+}
+
+.page-sidebar > ul > li > ul.sub > li:first-child > a {
+  border-top: 0px !important;
+}
+
+.page-sidebar > ul > li > ul.sub > li.active > a, 
+.page-sidebar > ul > li > ul.sub > li > a:hover {
+  color: #fff !important;
+  background: #4b4b4b !important;  
+}
+
+.page-sidebar > ul > li > ul.sub > li > a:hover {
+  background: #4b4b4b !important;
+}
+
+.page-sidebar .sidebar-search input{
+  background-color: #3d3d3d  !important;  
+  color: #bababa !important;
+}
+
+.page-sidebar .sidebar-search .input-box {
+  border-bottom-color: #959595  !important;
+}
+
+.page-sidebar .sidebar-search .submit {
+  background-image: url(../img/search-icon.png);
+}
+span.tiny { font-size: 10px; }
+
+.smlloading { float:right; display: inline-block; margin: 0 0 0 15px; background: transparent url(../img/loading-black.gif) no-repeat 0 0; width: 16px; height: 16px;}
+.smlloading.grnbg { background-image: url(../img/loading-green-bg.gif);}
+.smlloading.redbg { background-image: url(../img/loading-red-bg.gif);}
+.smlloading.bluebg { background-image: url(../img/loading-blue-bg.gif);}
+.smlloading.grybg { background-image: url(../img/loading-grey-bg.gif);}
+.smlloading.grn { background-image: url(../img/loading-green.gif);}
+.smlloading.red { background-image: url(../img/loading-red.gif);}
+.smlloading.blue { background-image: url(../img/loading-blue.gif);}
+
+.schedule-editor-form { display: none;}
+
+.resizeframe { float: right;}
+
+.frameshow { position: relative; margin: 0 auto 30px; }
+
+.currentschedules .btn.mini {
+	line-height: 16px;
+	height: 16px;
+	position: relative;
+}
+/***
+Landscape phone to portrait tablet
+***/
+@media (max-width:979px) { 
+  /***
+  page sidebar
+  ***/
+  .page-sidebar {
+    background-color: #232427 !important;
+  }
+
+  .page-sidebar > ul > li > a {
+    border-top: 1px solid #2c2d30 !important;
+  }
+
+  .page-sidebar > ul > li:last-child > a {
+    border-bottom: 0 !important;
+  }
+
+  .page-sidebar .sidebar-search input{
+    background-color: #232427  !important;  
+  }
+}

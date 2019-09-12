@@ -1,0 +1,14 @@
+.wysiwyg-color-default, 
+.wysiwyg-color-amber { color: #FF8C00; }
+.wysiwyg-color-red { color: #FF0000; }
+.wysiwyg-color-yellow { color: #FFFF00; }
+.wysiwyg-color-green { color: #00FF00; }
+.wysiwyg-color-blue { color: #0000FF; }
+.wysiwyg-color-cyan { color: #00FFFF; }
+.wysiwyg-color-magenta { color: #FF00FF; }
+.wysiwyg-color-white { color: #FFFFFF; }
+.wysiwyg-color-orange { color: #FF6400; }
+
+.wysiwyg-text-align-center { text-align: center; }
+.wysiwyg-text-align-left { text-align: left; }
+.wysiwyg-text-align-right { text-align: right; }

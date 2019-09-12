@@ -1,0 +1,88 @@
+
+a {
+    color: #FF4600;
+    text-shadow: none !important;
+}
+a:hover {
+	color: #FF4600;
+    text-decoration: underline;
+}
+.page-sidebar img {
+	padding: 40px 0;
+	background-color: #FF4600;
+}
+.portlet-body.blue, .portlet.blue {
+    border-color: #FF4600 !important;
+}
+.portlet.box.blue .portlet-title {
+    background-color: #FF4600;
+}
+
+/*** SIDEBAR ***/ /*
+.page-sidebar > ul > li > a {
+  border-top: 1px solid #FFF !important;
+  color: #000 !important;
+}
+
+.page-sidebar > ul > li:last-child > a {
+   border-bottom: 1px solid transparent !important;
+}
+
+.page-sidebar > ul > li:first-child > a {
+  border-top-color: transparent !important;
+}
+
+.page-sidebar > ul > li a i {
+   color: #000;
+}
+
+.page-sidebar > ul > li.has-sub.open >a, 
+.page-sidebar > ul > li >a:hover, 
+.page-sidebar > ul > li:hover>a {  
+  background: #FF7B45;
+}
+*/
+.page-sidebar > ul > li.active > a{
+  background: #FF4600 !important;  
+  border-top-color: transparent !important;
+  color:#FFF !important;
+  text-decoration: bold;
+}  
+
+.page-sidebar > ul > li.active > a i {
+  color:#FFF;
+}
+/*
+.page-sidebar > ul > li > a.open {
+  background: #313131;
+}
+
+.page-sidebar ul > li > a .arrow:before,
+.page-sidebar > ul > li > a .arrow.open:before {  
+   color: #000 !important;
+}
+
+.page-sidebar ul > li.active > a .arrow:before,
+.page-sidebar > ul > li.active > a .arrow.open:before {  
+   color: #fff !important;
+}
+
+.page-sidebar > ul > li > ul.sub > li > a {
+  color: #fff;
+  margin-left:0px;  
+  padding-left: 5px; 
+}
+
+.page-sidebar > ul > li > ul.sub > li:first-child > a {
+  border-top: 0px !important;
+}
+
+.page-sidebar > ul > li > ul.sub > li.active > a, 
+.page-sidebar > ul > li > ul.sub > li > a:hover {
+  color: #fff !important;
+  background: #FF7B45 !important;  
+}
+
+.page-sidebar > ul > li > ul.sub > li > a:hover {
+  background: #FF7B45 !important;
+}*/

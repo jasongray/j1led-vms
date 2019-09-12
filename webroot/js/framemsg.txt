@@ -1,0 +1,342 @@
+$.valHooks.textarea = {
+  get: function( elem ) {
+      return elem.value.replace( /\r?\n/g, "\n" );
+  } 
+};
+
+var Frames = function () {
+	
+	leddesigner = {};
+	
+	var loadBMPImage = function (img) {
+		Frames.overlay();
+		if (typeof img !== 'undefined') {
+			$.ajax({
+				url: _baseurl + 'files/frame_data/' + img + '.txt', 
+				type: 'GET',
+				success: function(framedata){
+					$('.led').each(function(){
+						$(this).prop('class', 'led');
+					});
+					var lines = framedata.split("\n");
+					var cols = lines[0].split("|");
+					for (var i = 0; i < lines.length; i++) {
+						var line = lines[i].substring(0, lines[i].length);
+						var pixel = line.split('|');
+						for (var j = 0; j < cols.length; j++) {
+							if (pixel[j] == '0,0,0' || pixel[j] == '#000') {
+								$('#current_r' + i + 'c' + j).prop('class', 'led');
+								$('#matrix_r' + i + 'c' + j).val(pixel[j]);
+							}
+			                else if (pixel[j] == '255,255,255' || pixel[j] == '#255255255') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('white');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '255,255,0' || pixel[j] == '#2552550') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('yellow');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '255,0,255' || pixel[j] == '#2550255') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('magenta');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '255,0,0' || pixel[j] == '#25500') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('red');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '0,255,255' || pixel[j] == '#0255255') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('cyan');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '0,255,0' || pixel[j] == '#02550') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('green');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '0,0,255' || pixel[j] == '#00255') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('blue');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '255,140,0' || pixel[j] == '#2551400') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('amber');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			                else if (pixel[j] == '255,165,0' || pixel[j] == '#2551650') {
+			                    $('#current_r' + i + 'c' + j).toggleClass('orange');
+			                    $('#matrix_r' + i + 'c' + j).val(pixel[j]);
+			                }
+			            }
+			        }
+		    },
+		    cache: false
+	    	}).promise().done(function(){
+		    	Frames.removeoverlay();
+		    });
+		    
+    	} else {
+    		
+    		var lines = $('#SignImageHeight').val();
+			var cols = $('#SignImageWidth').val();
+			for (var i = 0; i < lines; i++) {
+				for (var j = 0; j < cols; j++) {
+					var pixel = $('#matrix_r' + i + 'c' + j).val();
+					if (pixel == '0,0,0' || pixel == '#000') {
+						$('#current_r' + i + 'c' + j).prop('class', 'led');
+					}
+					else if (pixel == '255,255,255' || pixel == '#255255255') {
+						$('#current_r' + i + 'c' + j).toggleClass('white');
+					}
+					else if (pixel == '255,255,0' || pixel == '#2552550') {
+						$('#current_r' + i + 'c' + j).toggleClass('yellow');
+					}
+					else if (pixel == '255,0,255' || pixel == '#2550255') {
+						$('#current_r' + i + 'c' + j).toggleClass('magenta');
+					}
+					else if (pixel == '255,0,0' || pixel == '#25500') {
+						$('#current_r' + i + 'c' + j).toggleClass('red');
+					}
+					else if (pixel == '0,255,255' || pixel == '#0255255') {
+						$('#current_r' + i + 'c' + j).toggleClass('cyan');
+					}
+					else if (pixel == '0,255,0' || pixel == '#02550') {
+						$('#current_r' + i + 'c' + j).toggleClass('green');
+					}
+					else if (pixel == '0,0,255' || pixel == '#00255') {
+						$('#current_r' + i + 'c' + j).toggleClass('blue');
+					}
+					else if (pixel == '255,140,0' || pixel == '#2551400') {
+						$('#current_r' + i + 'c' + j).toggleClass('amber');
+					}
+					else if (pixel == '255,165,0' || pixel == '#2551650') {
+						$('#current_r' + i + 'c' + j).toggleClass('orange');
+					}
+			    }
+			}
+			Frames.removeoverlay();
+    	}
+    	
+    }
+    
+    var leddesigner = function() {
+    	// set default (if there are any)
+    	$('.textalign').removeClass('selected');
+    	$('.editcolour').removeClass('selected');
+    	$('.erasecolour').removeClass('selected');
+    	
+    	var fontalign = $('.fontalign').val();
+    	$('.textalign').each(function(){
+    		if ($(this).data('textalign') == fontalign){ $(this).toggleClass('selected'); }
+    	});
+    	var fontcolour = $('.fontcolour').val();
+    	$('.editcolour').each(function(){
+    		if ($(this).data('colour') == fontcolour){ $(this).toggleClass('selected'); }
+    	});
+    	
+    	
+    	// load event bindings
+    	$('.editcolour').click(function(e){
+    		e.preventDefault();
+    		$('.editcolour').removeClass('selected');
+    		$('.erasecolour').removeClass('selected');
+    		$(this).toggleClass('selected');
+    		$('.palette').val($(this).data('colcode')).data('colour', $(this).data('colour'));
+    		$('#framepreview').prop('class', $(this).data('colour'));
+    		$('.fontcolour').val($(this).data('colour'));
+    	});
+    	$('.erasecolour').click(function(e){
+    		e.preventDefault();
+    		$('.editcolour').removeClass('selected');
+    		$('.erasecolour').removeClass('selected');
+    		$(this).toggleClass('selected');
+    		$('.palette').val('0,0,0').data('colour', '');
+    		$('#framepreview').prop('class', 'eraser');
+    		$('.fontcolour').val('');
+    	});
+    	$('.eraseall').click(function(e){
+    		e.preventDefault();
+    		clearGrid();
+    		$('.fontcolour').val('');
+    	});
+    	$('.led').click(function(){
+    		$('#'+$(this).prop('id').replace('current', 'matrix')).val($('.palette').val());
+    		$(this).prop('class', 'led').toggleClass($('.palette').data('colour'));
+    	});
+    	$('.textinput').keyup(function(e){
+    		textinput(e, $(this).val());
+    	});
+    	$('.textalign').click(function(e){
+    		e.preventDefault();
+    		$('.textalign').removeClass('selected');
+    		$(this).toggleClass('selected');
+    		$('.fontalign').val($(this).data('textalign'));
+    		textinput(e, $('.textinput').val());
+    	});
+    }
+    
+    var textinput = function(evt, txt) {
+    	clearGrid();
+    	var font = '5X7';
+    	var key = (evt.which) ? evt.which : evt.keyCode;
+		var lines = 0;
+		var signWidth = $('#SignImageWidth').val();
+		var signHeight = $('#SignImageHeight').val();
+		var strWidth = totalWidth(txt, font, lines);
+		var centerAlign = Math.ceil(strWidth / 2);
+		var chrHeight = 0;
+		var y = 0;
+		var x = 0;
+		var align = $('.fontalign').val();
+		if (align == "center") {
+            var y = (signWidth / 2) - centerAlign;
+        }
+        else if (align == "left") {
+            var y = 0;
+        }
+        else if (align == "right") {
+            var y = (signWidth - strWidth);
+        }
+		var colour = $('.fontcolour').val();
+		for (var i = 0; i < txt.length; i++) {
+			chr = txt[i];
+			if (chr.match(/\n/g)) {
+				lines = lines + 1;
+				strWidth = totalWidth(txt, font, lines);
+				centerAlign = Math.ceil(strWidth / 2);
+				x = Math.ceil((parseInt(chrHeight) * lines) + lines);
+				if (align == "center") {
+	                y = (signWidth / 2) - centerAlign;
+	            }
+	            else if (align == "left") {
+	            	y = 0;
+	            }
+	            else if (align == "right") {
+	                y = (signWidth - strWidth);
+	            }
+			} else {
+    			var fontArray = leddesigner.fonts.find('font[name='+font+'] character[val="'+chr+'"]').text();
+    			var chrWidth = leddesigner.fonts.find('font[name='+font+']').attr('width');
+    			var chrHeight = leddesigner.fonts.find('font[name='+font+']').attr('height');
+    			var counter = 0;
+    			for (var k = 2; k < fontArray.length; k++) {
+    				if (x > signHeight - 1 || x < 0 || y > signWidth - 1 || y < 0) {
+                        // invalid
+                    }
+    				else if (fontArray[k] == 0) {
+						$('#current_r' + x + 'c' + y).prop('class', 'led');
+						$('#matrix_r' + x + 'c' + y).val('0,0,0');
+					}
+					else {
+						if (colour == 'white') {
+				        	$('#current_r' + x + 'c' + y).toggleClass('white');
+				            $('#matrix_r' + x + 'c' + y).val('255,255,255');
+				        }
+				        else if (colour == 'yellow') {
+				            $('#current_r' + x + 'c' + y).toggleClass('yellow');
+				            $('#matrix_r' + x + 'c' + y).val('255,255,0');
+				        }
+				        else if (colour == 'magenta') {
+				            $('#current_r' + x + 'c' + y).toggleClass('magenta');
+				            $('#matrix_r' + x + 'c' + y).val('255,0,255');
+				        }
+				        else if (colour == 'red') {
+				            $('#current_r' + x + 'c' + y).toggleClass('red');
+				            $('#matrix_r' + x + 'c' + y).val('255,0,0');
+				        }
+				        else if (colour == 'cyan') {
+				            $('#current_r' + x + 'c' + y).toggleClass('cyan');
+				            $('#matrix_r' + x + 'c' + y).val('0,255,255');
+				        }
+				        else if (colour == 'green') {
+				            $('#current_r' + x + 'c' + y).toggleClass('green');
+				            $('#matrix_r' + x + 'c' + y).val('0,255,0');
+				        }
+				        else if (colour == 'blue') {
+				            $('#current_r' + x + 'c' + y).toggleClass('blue');
+				            $('#matrix_r' + x + 'c' + y).val('0,0,255');
+				        }
+				        else if (colour == 'amber') {
+				            $('#current_r' + x + 'c' + y).toggleClass('amber');
+				            $('#matrix_r' + x + 'c' + y).val('255,140,0');
+				        }
+				        else if (colour == 'orange') {
+				            $('#current_r' + x + 'c' + y).toggleClass('orange');
+				            $('#matrix_r' + x + 'c' + y).val('255,165,0');
+				        }
+				    }
+				    if (counter == chrHeight-1) {
+                        y = y + 1;
+                        counter = -1;
+                        x = -1;
+                        if (lines > 0) {
+                        	x = Math.ceil(-1 + (parseInt(chrHeight) * lines) + lines);
+                        }
+                    }
+                    counter = counter + 1;
+                    x = Math.ceil(x + 1);
+                }
+    		}
+		}
+    }
+    
+    var clearGrid = function() {
+    	$('.led').each(function(){
+			$(this).prop('class', 'led');
+			$(this).find('input').val('0,0,0');
+		});
+    }
+    
+    var loadFonts = function() {
+    	$.ajax({
+    		url: _baseurl+'files/fontfile.xml',
+    		dataType: 'xml',
+    		success: function(xml) {
+    			leddesigner.fonts = $(xml);
+    		},
+    		error: function(d) {
+    			alert('Error loading XML data');
+    		}
+    	});
+    }
+    
+    var totalWidth = function(text, font, lines) {
+        var tw = 0;
+        var chr;
+        var txt = text.split(/\r\n|\r|\n/);
+        for (var i = 0; i < txt[lines].length; i++) {
+        	chr = txt[lines][i];
+        	if (chr.match(/\n/g)) {
+    		} else {
+        		fontArray = leddesigner.fonts.find('font[name='+font+'] character[val="'+chr+'"]').text();
+        		tw = Math.ceil(tw + parseInt(fontArray[1]));
+        	}
+        }
+        return tw;
+    }
+	
+	return {
+	
+		init: function () {
+			$('.selectPredefined').click(function(){
+				loadBMPImage($(this).find('img').prop('alt'));
+			});
+		},
+		
+		admininit: function () {
+			loadBMPImage($('.thumbnail').find('img').prop('alt'));
+			leddesigner();
+			loadFonts();
+		},
+		
+		images: function () {
+			loadBMPImage();
+		},
+		
+		overlay: function () {
+			$('.loadingdesigner').fadeIn();
+        },
+
+        removeoverlay: function () {
+        	$('.loadingdesigner').fadeOut();
+        }
+			
+	};
+}();
